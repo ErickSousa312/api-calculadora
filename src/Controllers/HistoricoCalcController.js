@@ -1,6 +1,11 @@
 const { findById } = require('../models/HistoricoCalc')
 const Historico = require('../models/HistoricoCalc')
 
+const soma = (a,b)=>{
+    const resultado = a + b
+    return resultado
+}
+
 class HistoricoCalcController{
     async post (req, res){
         try {
@@ -34,7 +39,7 @@ class HistoricoCalcController{
             const historico = await Historico.findOne({_id: id})
 
             console.log("-------------------------------\n"+historico.resultado+"\n-------------------------------")
-            historico.resultado = historico.numero1 + historico.resultado 
+            historico.resultado = soma(historico.numero1, historico.resultado)
             
             console.log("-------------------------------\n"+historico+"-------------------------------")
             if(!historico){
