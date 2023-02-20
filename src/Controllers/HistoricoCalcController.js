@@ -42,6 +42,7 @@ class HistoricoCalcController{
                  return
             }
             try {
+                await Historico.deleteOne({_id:id})
                 res.status(422).json({msg:"historico deletado com sucesso"})
             } catch (error) {
                 res.status(500).json({error: error.message})
