@@ -1,7 +1,8 @@
 const express = require('express');
+const cors = require('cors')
 const routes = require('./Routes/routes');
 const app = express();
-const cors = require('cors')
+
 
 app.use(
     express.urlencoded({extended:true})
@@ -9,12 +10,18 @@ app.use(
 app.use(express.json())
 app.use(routes);
 
-app.use((re,res, next) =>{
-    res.header("Acess-Control-Allow-Origin", "*");
-    res.header("Acess-Control-Allow-Methods", "GET, PUT, DELETE, PATCH, POST");
-    res.header("Acess-Control-Allow-Headrs", "X-PINGOTHER, Content-Type, Authorization");
-    app.use(cors());
-    next();
-})
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+  if (req.method == "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+  next();
+});
 
 module.exports = app

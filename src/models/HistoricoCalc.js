@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const HistoricoCalc = mongoose.model('historicoCalc',{
     numero1 :  {type:Number, required:true},
     numero2 :  {type:Number, required:true},
-    resultado :  {type:Number, required:true}
+    resultado :  {type:String, required:true}
 }) 
 
 module.exports = HistoricoCalc

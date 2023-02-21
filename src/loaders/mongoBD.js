@@ -16,7 +16,7 @@ async function startDB(){
     )
     .then(
         console.log('Conectado ao MongoBD!'),
-        app.listen(3000)
+        app.listen(3002)
     )
     .catch(
         error=>console.log(error)

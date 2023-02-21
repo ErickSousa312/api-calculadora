@@ -5,13 +5,16 @@ class HistoricoCalcController{
     async post (req, res){
         try {
             const {numero1, numero2, resultado} = req.body
-
+            console.log(req.body+'-------------------')
+            console.log(numero1+'-------------------')
+            console.log(numero2+'-------------------')
+            console.log(resultado+'-------------------')
             const historico = {
                 numero1,
                 numero2,
                 resultado
             }
-
+            console.log("passou aki")
             await Historico.create(historico)
             res.status(201).json({msg:"Valores inseridos com sucesso!"})
 
