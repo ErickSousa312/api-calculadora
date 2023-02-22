@@ -1,9 +1,12 @@
+const cors = require('cors')
 const routes = require('express').Router()
 const Person = require ('../Controllers/PersonController')
 const Associado = require ('../Controllers/AssociadoController')
 const Plano = require('../Controllers/PlanoController')
 const Atletica = require('../Controllers/AtleticaController')
 const Historico = require('../Controllers/HistoricoCalcController')
+
+routes.use(cors())
 
 //rotas person
 routes.get('/person',Person.get)

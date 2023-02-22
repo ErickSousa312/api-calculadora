@@ -1,8 +1,11 @@
 const { findById } = require('../models/HistoricoCalc')
 const Historico = require('../models/HistoricoCalc')
 
+
 class HistoricoCalcController{
-    async post (req, res){
+    async post (req, res , next){      
+        
+          
         try {
             const {numero1, numero2, resultado} = req.body
             console.log(req.body+'-------------------')
@@ -23,7 +26,9 @@ class HistoricoCalcController{
         }
     }
 
-    async get (req, res){
+    async get (req, res,  next){
+
+        
         try {
             const historico = await Historico.find()
             res.status(200).json(historico) 
